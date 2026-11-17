@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Beyond The Road Toll</title>
+  <meta name="description" content="An interactive data story about people hospitalised after road crashes in Australia, 2011–2021, using BITRE hospitalised injury data.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="#top">Beyond The Road Toll</a>
+    <details class="nav-menu">
+      <summary>Charts</summary>
+      <ul>
+        <li><a href="#q1">Q1 · National trend</a></li>
+        <li><a href="#q2">Q2 · Road users</a></li>
+        <li><a href="#q3">Q3 · Who is injured</a></li>
+        <li><a href="#q4">Q4 · Counterparty</a></li>
+        <li><a href="#q5">Q5 · Length of stay</a></li>
+        <li><a href="#about">About the data</a></li>
+      </ul>
+    </details>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============ LANDING ============ -->
+<section id="top" class="hero">
+  <div class="container hero-grid">
+    <div class="hero-text">
+      <p class="eyebrow">An interactive data story · BITRE hospitalised injury data, 2011–2021</p>
+      <h1>Beyond The Road Toll</h1>
+      <p class="lede">Road deaths make the headlines. This story looks at the people who survive a crash but end up in hospital: who they are, how that changed over a decade, and how long they stay.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#q1">Start the story</a>
+        <a class="btn btn-secondary" href="#about">About the data</a>
+      </div>
+    </div>
+    <figure class="hero-visual" aria-labelledby="hero-caption">
+      <div id="hero-chart" class="chart"></div>
+      <figcaption id="hero-caption">People hospitalised after road crashes each year, Australia</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="explore">
+  <div class="container">
+    <h2 class="section-label">Explore</h2>
+    <ul class="card-grid">
+      <li><a class="q-card" href="#q1"><span class="q-num">Q1</span><span class="q-title">National trend</span><span class="q-sub">How did hospitalisations change from 2011 to 2021?</span></a></li>
+      <li><a class="q-card" href="#q2"><span class="q-num">Q2</span><span class="q-title">Road users</span><span class="q-sub">Which road users account for the change?</span></a></li>
+      <li><a class="q-card" href="#q3"><span class="q-num">Q3</span><span class="q-title">Who is injured</span><span class="q-sub">How do age, sex and remoteness differ?</span></a></li>
+      <li><a class="q-card" href="#q4"><span class="q-num">Q4</span><span class="q-title">Counterparty</span><span class="q-sub">Which vehicles or objects are involved?</span></a></li>
+      <li><a class="q-card" href="#q5"><span class="q-num">Q5</span><span class="q-title">Length of stay</span><span class="q-sub">Who stays in hospital longest?</span></a></li>
+    </ul>
+
+    <h2 class="section-label">About the data</h2>
+    <div class="about-teaser">
+      <a class="q-card about-card" href="#about"><span class="q-title">Sources &amp; more</span></a>
+      <p class="about-text">A <strong>hospitalised injury</strong> is a person admitted to hospital after a road crash and discharged alive. The unit is the person, not the crash. People treated only in emergency departments are excluded under some states' rules, and deaths are excluded. Data: BITRE Hospitalised Injury (September 2023), from the AIHW National Hospital Morbidity Database.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Q1 ============ -->
+<section id="q1" class="chapter">
+  <div class="container">
+    <p class="eyebrow">Q1 · National trend</p>
+    <h2>Hospitalisations rose through the 2010s, dipped in 2020, then recovered</h2>
+    <p class="intro">34,033 people were hospitalised after road crashes in 2011 and 39,505 in 2021. Two states changed who they count during this period (marked on the chart), so levels across those lines aren't directly comparable. The data alone can't tell us why 2020 was lower.</p>
+
+    <div class="controls" role="group" aria-label="Q1 chart view">
+      <span class="control-label">View</span>
+      <div class="toggle" id="q1-toggle">
+        <button type="button" data-view="annual" aria-pressed="true">Annual</button>
+        <button type="button" data-view="monthly" aria-pressed="false">Monthly</button>
+      </div>
+    </div>
+    <figure class="chart-card">
+      <figcaption class="chart-title" id="q1-title">People hospitalised after road crashes, Australia, 2011–2021</figcaption>
+      <div id="q1-chart" class="chart"></div>
+      <p class="chart-note">Dashed lines mark changes in counting rules. Source: BITRE (2023), Hospitalised Injury, national workbook.</p>
+      <details class="data-table"><summary>Show data table</summary><div id="q1-table"></div></details>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ Q2 ============ -->
+<section id="q2" class="chapter alt">
+  <div class="container">
+    <p class="eyebrow">Q2 · Road users</p>
+    <h2>Which road users account for the change?</h2>
+    <p class="intro">Pick two years to compare. Change in count shows where the extra hospitalisations came from; % change shows growth relative to each group's size; share shows each group's slice of the total.</p>
+
+    <div class="controls">
+      <label class="control-label" for="q2-from">Compare</label>
+      <select id="q2-from"></select>
+      <label class="control-label" for="q2-to">with</label>
+      <select id="q2-to"></select>
+      <div class="toggle" id="q2-metric" role="group" aria-label="Q2 measure">
+        <button type="button" data-metric="count" aria-pressed="true">Change in count</button>
+        <button type="button" data-metric="pct" aria-pressed="false">% change</button>
+        <button type="button" data-metric="share" aria-pressed="false">Share of total</button>
+      </div>
+    </div>
+    <p class="warning" id="q2-warning" hidden></p>
+    <figure class="chart-card">
+      <figcaption class="chart-title" id="q2-title"></figcaption>
+      <div class="legend" id="q2-legend"></div>
+      <div id="q2-chart" class="chart"></div>
+      <p class="chart-note">Small groups can show large % changes from small numbers; hover a bar for the counts behind it. "Other or unknown" is kept. Source: BITRE (2023).</p>
+      <details class="data-table"><summary>Show data table</summary><div id="q2-table"></div></details>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ Q3 ============ -->
+<section id="q3" class="chapter">
+  <div class="container">
+    <p class="eyebrow">Q3 · Who is injured</p>
+    <h2>Men, and adults aged 17–64, make up most hospitalisations</h2>
+    <p class="intro">Drag the slider or press play to step through the years.</p>
+    <p class="warning"><strong>Counts, not rates.</strong> Bigger groups have bigger counts. These charts show how many people were hospitalised, not each group's risk.</p>
+
+    <div class="controls">
+      <button type="button" class="play-btn" id="q3-play" aria-label="Play through the years">
+        <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M4 2 L14 8 L4 14 Z" fill="currentColor"/></svg>
+      </button>
+      <label class="control-label" for="q3-year">Year</label>
+      <input type="range" id="q3-year" min="2011" max="2021" step="1" value="2021">
+      <output id="q3-year-out" for="q3-year" class="year-out">2021</output>
+    </div>
+
+    <div class="two-col">
+      <figure class="chart-card">
+        <figcaption class="chart-title" id="q3a-title"></figcaption>
+        <div class="legend" id="q3a-legend"></div>
+        <div id="q3a-chart" class="chart"></div>
+        <p class="chart-note" id="q3a-note"></p>
+        <details class="data-table"><summary>Show data table</summary><div id="q3a-table"></div></details>
+      </figure>
+      <figure class="chart-card">
+        <figcaption class="chart-title">People hospitalised by remoteness of home address, 2011–2021</figcaption>
+        <div id="q3b-chart" class="chart"></div>
+        <p class="chart-note" id="q3b-note">Each panel has its own scale because Remote counts are much smaller. The dot marks the selected year.</p>
+        <details class="data-table"><summary>Show data table</summary><div id="q3b-table"></div></details>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Q4 ============ -->
+<section id="q4" class="chapter alt">
+  <div class="container">
+    <p class="eyebrow">Q4 · Counterparty</p>
+    <h2>What else was involved when each road user was hospitalised?</h2>
+    <p class="intro">Each row adds to 100%: it shows how one road user's hospitalisations split across the vehicle or object involved. Counterparty is coded from hospital records and doesn't tell us who was at fault.</p>
+
+    <figure class="chart-card">
+      <figcaption class="chart-title">Share of each road user's hospitalisations by counterparty, Australia, 2011–2021 (%)</figcaption>
+      <div class="legend" id="q4-legend"></div>
+      <p class="scroll-hint">Scroll sideways to see all counterparties →</p>
+      <div id="q4-chart" class="chart"></div>
+      <p class="chart-note">Blank cells: no recorded cases. Rows sorted by total hospitalisations. Source: BITRE (2023).</p>
+      <details class="data-table"><summary>Show data table</summary><div id="q4-table"></div></details>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ Q5 ============ -->
+<section id="q5" class="chapter">
+  <div class="container">
+    <p class="eyebrow">Q5 · Length of stay</p>
+    <h2>Older people stay in hospital far longer</h2>
+    <p class="intro">Average bed days per hospitalisation, by age group. Bed days are one proxy for severity: a longer stay can also reflect age, other health conditions or hospital practice.</p>
+
+    <div class="controls" role="group" aria-label="Highlight an age group">
+      <span class="control-label">Highlight</span>
+      <div class="pills" id="q5-pills"></div>
+    </div>
+    <figure class="chart-card">
+      <figcaption class="chart-title">Average bed days per hospitalisation by age group, Australia, 2011–2021</figcaption>
+      <div id="q5-chart" class="chart"></div>
+      <p class="chart-note">Average = total bed days ÷ hospitalisations. One record with missing age is excluded. Source: BITRE (2023).</p>
+      <details class="data-table"><summary>Show data table</summary><div id="q5-table"></div></details>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="about" class="chapter alt">
+  <div class="container">
+    <p class="eyebrow">About the data</p>
+    <h2>Where the numbers come from, and what they can't tell us</h2>
+    <div class="about-grid">
+      <div class="info-card">
+        <h3>Source</h3>
+        <p>Bureau of Infrastructure and Transport Research Economics (BITRE), <a href="https://www.bitre.gov.au/publications/ongoing/hospitalised-injury">Hospitalised Injury</a>, national workbook (September 2023), raw sheet filtered to Cause of injury = "Traffic". Data from the AIHW National Hospital Morbidity Database. Accessed [date].</p>
+      </div>
+      <div class="info-card">
+        <h3>What is counted</h3>
+        <ul>
+          <li><strong>Counted:</strong> people admitted to hospital after a road crash and discharged alive.</li>
+          <li><strong>Not crashes:</strong> the unit is the injured person.</li>
+          <li><strong>Not all injuries:</strong> emergency-only cases are excluded under some states' rules.</li>
+          <li><strong>Not deaths:</strong> in-hospital deaths are excluded.</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h3>Things to keep in mind</h3>
+        <ul>
+          <li><strong>Reporting breaks:</strong> Victoria (2012) and NSW (2017) changed who is counted.</li>
+          <li><strong>Counts, not rates:</strong> no population data are used.</li>
+          <li><strong>Unknown values</strong> are kept as their own category so totals add up.</li>
+          <li><strong>No causes:</strong> the charts show patterns, not why they happened.</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h3>How we built it</h3>
+        <p>BITRE workbook → KNIME (filter, check, aggregate) → CSV files → D3.js charts.</p>
+        <p>[Team member names] · [Reference list]</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>Beyond The Road Toll · Data: BITRE (2023), Hospitalised Injury · <a href="#top">Back to top</a></p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/hero.js"></script>
+<script src="js/q1.js"></script>
+<script src="js/q2.js"></script>
+<script src="js/q3.js"></script>
+<script src="js/q4.js"></script>
+<script src="js/q5.js"></script>
+</body>
+</html>
