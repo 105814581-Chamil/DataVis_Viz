@@ -52,7 +52,3 @@ For chart marks, a lighter amethyst `#4B40A0` is paired with Burnt Peach `#CE6C4
 - Colour is never the only cue: direct labels, legends and tooltips name every series.
 - Controls are real buttons, selects and sliders, usable by keyboard.
 
-## Still to fill in
-
-- Access date and team names in the About section (`index.html`).
-- Reference list.
